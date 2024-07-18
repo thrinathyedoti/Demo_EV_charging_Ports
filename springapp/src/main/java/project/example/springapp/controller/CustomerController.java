@@ -34,6 +34,15 @@ public class CustomerController {
     public Customer getCustomerByCustomerName(@PathVariable String name){
         return customerService.getCustomerByCustomerName(name);
     }
+    @GetMapping("filtercustomersc")
+    public List<Customer> customerFilter1(@RequestParam(required = false, defaultValue = "Andhra Pradesh") String state, @RequestParam(required = false, defaultValue = "Tirupati") String city){
+        return customerService.filterCustomer1(state, city);
+    }
+
+    @GetMapping("filtercustomersca")
+    public List<Customer> customerFilter2(@RequestParam(required = false, defaultValue = "Andhra Pradesh") String state, @RequestParam(required = false, defaultValue = "Tirupati") String city,@RequestParam(required = false, defaultValue = "Balaji Nagar") String area){
+    return customerService.filterCustomer2(state, city, area);
+    }
 
     @PutMapping("/updatecustomer")
     public String updateCustomer(@RequestBody Customer customer){

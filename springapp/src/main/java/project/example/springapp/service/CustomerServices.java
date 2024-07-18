@@ -57,6 +57,14 @@ public class CustomerServices {
         return customerRepo.findByState(state);
     }
 
+
+    public List<Customer> filterCustomer1(String state,String city){
+        return customerRepo.findByStateAndCity(state, city);
+    }
+    public List<Customer> filterCustomer2(String state,String city, String area){
+        return customerRepo.findByStateAndCityAndArea(state, city, area);
+    }
+
     public void updateCustomer(Customer customer) {
 //        int index=0;
 //        for(int i=0;i<stations.size();i++){
