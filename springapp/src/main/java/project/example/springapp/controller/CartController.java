@@ -23,7 +23,7 @@ public class CartController {
     public String addProductToCart(@PathVariable int cusId, @PathVariable int proId, @PathVariable int quan){
         cartService.productTOCart(cusId, proId,quan);
         Customer cusName= customerRepo.findById(cusId).get();
-        return "Added To Cart Successful, "+cusName.getCustomername();
+        return "Added To Cart Successfully, "+cusName.getCustomername();
     }
 
     @GetMapping("cartitems")

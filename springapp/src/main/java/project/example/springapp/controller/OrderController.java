@@ -19,7 +19,7 @@ public class OrderController {
     @RequestMapping("addorder/{cusId}")
     public String addOrder(@PathVariable int cusId){
         orderService.orderfromproduct(cusId);
-        return "Ordered Successfully";
+        return "Ordered Successfully :-)";
     }
     @RequestMapping("allorders")
     public List<Orders> allOrders(){

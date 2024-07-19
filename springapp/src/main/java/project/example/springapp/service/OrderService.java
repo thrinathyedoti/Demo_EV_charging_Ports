@@ -26,16 +26,16 @@ public class OrderService {
 
     public void orderfromproduct(int cusId){
         Customer customer=customerRepo.findById(cusId).get();
-        for (int i = 0; i<customer.getCarts().size(); i++) {
-            int proId = customer.getCarts().get(i).getProduct().getProductId();
-            int quan= customer.getCarts().get(i).getQuantity();
+        for (int i = 0; i<customer.getCart().size(); i++) {
+            int proId = customer.getCart().get(i).getProduct().getProductId();
+            int quan= customer.getCart().get(i).getQuantity();
             Products products= productRepo.findById(proId).get();
             Orders orders1=new Orders();
             orders1.setCustomer(customer);
             orders1.setProduct(products);
             orders1.setQuantity(quan);
             orderRepo.save(orders1);
-            Long d_cartId=customer.getCarts().get(i).getCartId();
+            Long d_cartId=customer.getCart().get(i).getCartId();
             cartRepo.deleteById(d_cartId);
         }
     }
@@ -43,7 +43,7 @@ public class OrderService {
 
     public int d_cartcount(int cusId){
         Customer customer1=customerRepo.findById(cusId).get();
-        int c=customer1.getCarts().size();
+        int c=customer1.getCart().size();
         return c;
     }
 
