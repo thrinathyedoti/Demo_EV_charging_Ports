@@ -17,15 +17,21 @@ import java.util.List;
 @Component
 @Entity
 public class Orders {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long orderId;
 
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
+    private int quantity;
 
     @JsonIgnore
     @ManyToOne
-    private  Customer customer;
+    @JoinColumn(name = "customerId")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private Products product;
+
+
 }

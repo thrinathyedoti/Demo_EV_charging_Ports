@@ -28,10 +28,6 @@ public class Customer {
     private String area;
 
 
-//    @OneToOne(mappedBy = "customer")
-    @JsonIgnore
-    @OneToMany(mappedBy = "customer")
-    List<Cart> cart;
 
     @OneToMany(mappedBy = "customer")
     List<DummyCart> dummyCarts;

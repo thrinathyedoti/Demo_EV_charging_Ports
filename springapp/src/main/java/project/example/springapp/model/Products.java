@@ -21,9 +21,8 @@ public class Products {
     private double costperport;
 
     @JsonIgnore
-//    @OneToOne(mappedBy = "product")
     @OneToMany(mappedBy = "product")
-    List<Cart> cart;
+    List<Orders> orders;
 
     @JsonIgnore
     @OneToMany(mappedBy = "product")
