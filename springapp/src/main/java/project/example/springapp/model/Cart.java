@@ -12,10 +12,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class DummyCart {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long dummyCartId;
+    private Long CartId;
 
     private int quantity;
 

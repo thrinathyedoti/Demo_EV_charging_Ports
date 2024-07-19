@@ -26,7 +26,7 @@ public class Products {
 
     @JsonIgnore
     @OneToMany(mappedBy = "product")
-    List<DummyCart> dummyCarts;
+    List<Cart> carts;
 
 
 

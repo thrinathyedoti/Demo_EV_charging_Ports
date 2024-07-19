@@ -1,13 +1,11 @@
 package project.example.springapp.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Set;
 
 
 @AllArgsConstructor
@@ -30,7 +28,7 @@ public class Customer {
 
 
     @OneToMany(mappedBy = "customer")
-    List<DummyCart> dummyCarts;
+    List<Cart> carts;
 
     @OneToMany(mappedBy = "customer")
     List<Orders> orders;
