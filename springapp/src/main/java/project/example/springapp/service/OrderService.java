@@ -35,7 +35,7 @@ public class OrderService {
             orders1.setProduct(products);
             orders1.setQuantity(quan);
             orderRepo.save(orders1);
-            Long d_cartId=customer.getCarts().get(i).getDummyCartId();
+            Long d_cartId=customer.getCarts().get(i).getCartId();
             cartRepo.deleteById(d_cartId);
         }
     }
