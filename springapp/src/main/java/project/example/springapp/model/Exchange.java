@@ -16,24 +16,19 @@ import java.util.List;
 @Setter
 @Component
 @Entity
-public class Orders {
-
+public class Exchange {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long orderId;
+    private Long exchangeId;
+    private Long exchangedOrderId;
     private int quantity;
-    private String exchangeStatus;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "customerId")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "productId")
     private Products product;
-
-
 
 
 }

@@ -1,6 +1,7 @@
 package project.example.springapp.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.stereotype.Component;
@@ -32,5 +33,9 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer")
     List<Orders> orders;
+
+
+    @OneToMany(mappedBy = "customer")
+    List<Exchange> exchangeOrders;
 
 }

@@ -28,6 +28,9 @@ public class Products {
     @OneToMany(mappedBy = "product")
     List<Cart> carts;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "product")
+    List<Exchange> exchangeOrders;
 
 
 }
