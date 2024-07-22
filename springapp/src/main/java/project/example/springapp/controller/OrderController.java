@@ -15,12 +15,16 @@ public class OrderController {
 
     @RequestMapping("addorder/{cusId}")
     public String addOrder(@PathVariable int cusId){
-        orderService.orderfromproduct(cusId);
+        orderService.addOrder(cusId);
         return "Ordered Successfully :-)";
     }
     @RequestMapping("allorders")
     public List<Orders> allOrders(){
         return orderService.allOrders();
+    }
+    @GetMapping("ordersbycustomerid/{cusId}")
+    public List<Orders> ordersByCustomerId(@PathVariable("cusId") int customerId){
+        return orderService.ordersByCustomerId(customerId);
     }
 
 }

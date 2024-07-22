@@ -12,6 +12,9 @@ import project.example.springapp.repository.ExchangeRepo;
 import project.example.springapp.repository.OrderRepo;
 import project.example.springapp.repository.ProductRepo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @Service
 public class ExchangeService {
@@ -42,8 +45,21 @@ public class ExchangeService {
                 orderRepo.save(orders1);
             }
         }
-
     }
+
+    public List<Exchange> allexchanges(){
+        return exchangeRepo.findAll();
+    }
+
+    public List<Exchange> exchangesByCustomerId(int cusId){
+        Customer customer=customerRepo.findById(cusId).get();
+        List<Exchange> exchangeList=new ArrayList<>();
+        for(Exchange exchange:customer.getExchangeOrders()){
+            exchangeList.add(exchange);
+        }
+        return exchangeList;
+    }
+
 
 
 }

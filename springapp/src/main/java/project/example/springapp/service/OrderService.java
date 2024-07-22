@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import project.example.springapp.model.*;
 import project.example.springapp.repository.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -24,7 +25,7 @@ public class OrderService {
     @Autowired
     Customer customer;
 
-    public void orderfromproduct(int cusId){
+    public void addOrder(int cusId){
         Customer customer=customerRepo.findById(cusId).get();
         String exchange="NO";
         for (int i = 0; i<customer.getCart().size(); i++) {
@@ -40,6 +41,17 @@ public class OrderService {
             Long d_cartId=customer.getCart().get(i).getCartId();
             cartRepo.deleteById(d_cartId);
         }
+
+    }
+
+    public List<Orders> ordersByCustomerId(int cusId){
+        Customer customer1=customerRepo.findById(cusId).get();
+        List<Orders> ordersList=new ArrayList<>();
+        for (Orders orders1:customer1.getOrders()){
+            ordersList.add(orders1);
+        }
+        return ordersList;
+
     }
 
 

@@ -1,10 +1,7 @@
 package project.example.springapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import project.example.springapp.model.Cart;
 import project.example.springapp.model.Customer;
 import project.example.springapp.repository.CustomerRepo;
@@ -25,6 +22,19 @@ public class CartController {
         Customer cusName= customerRepo.findById(cusId).get();
         return "Added To Cart Successfully, "+cusName.getCustomername();
     }
+    @GetMapping("cartbycustomerid/{customerId}")
+    public List<Cart> cartByCustomerId(@PathVariable int customerId){
+        return cartService.cartByCustomerId(customerId);
+    }
+    @PutMapping("updatequantity/{cartId}/{quantity}")
+    public void updateQuantity(@PathVariable Long cartId,@PathVariable int quantity){
+        cartService.updateQuantityInCart(cartId,quantity);
+    }
+    @DeleteMapping("deleteproductfromCart/{cartId}")
+    public void deleteProductInCart(@PathVariable Long cartId){
+        cartService.deleteProductFromCart(cartId);
+    }
+
 
     @GetMapping("cartitems")
     public List<Cart> allProductFromCart(){

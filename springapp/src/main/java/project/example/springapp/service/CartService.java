@@ -10,6 +10,7 @@ import project.example.springapp.repository.CustomerRepo;
 import project.example.springapp.repository.CartRepo;
 import project.example.springapp.repository.ProductRepo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -34,4 +35,23 @@ public class CartService {
     public List<Cart> allProductFromCart() {
        return cartRepo.findAll();
     }
+
+    public void deleteProductFromCart(Long cartId){
+                cartRepo.deleteById(cartId);
+    }
+    public void updateQuantityInCart(Long cartId, int quantity){
+        Cart cart=cartRepo.findById(cartId).get();
+        cart.setQuantity(quantity);
+        cartRepo.save(cart);
+    }
+
+    public List<Cart> cartByCustomerId(int cusId){
+        Customer customer=customerRepo.findById(cusId).get();
+        List<Cart> cartList=new ArrayList<>();
+        for(Cart cart:customer.getCart()){
+            cartList.add(cart);
+        }
+        return cartList;
+    }
+
 }
